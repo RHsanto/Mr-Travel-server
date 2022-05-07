@@ -17,11 +17,10 @@ async function run() {
   try {
     await client.connect();
     const database = client.db("travelsinfo");
-    const database2 = client.db("travelData");
     const hotelInfoCollection = database.collection("hotelInfo");
     const tourInfoCollection = database.collection(" tourInfo" );
     const flightsCollection = database.collection("flights");
-    const busCollection = database2.collection(" busInfo");
+    const busCollection = database.collection(" busTickets");
 
  
 
@@ -43,6 +42,7 @@ async function run() {
     const hotels = await cursor.toArray();
     res.send(hotels);
    });
+
    app.get('/tour', async (req,res)=>{
     const cursor = tourInfoCollection.find({});
     const tours = await cursor.toArray();
@@ -54,7 +54,6 @@ async function run() {
     const cursor = busCollection.find({});
     const busInfo = await cursor.toArray();
     res.send(busInfo);
-    console.log(busInfo);
    });
  
 
