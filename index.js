@@ -20,7 +20,7 @@ async function run() {
     const hotelInfoCollection = database.collection("hotelInfo");
     const tourInfoCollection = database.collection(" tourInfo" );
     const flightsCollection = database.collection("flights");
-    const busCollection = database.collection(" busTickets");
+    const busesCollection = database.collection(" busInfo");
 
  
 
@@ -43,17 +43,17 @@ async function run() {
     res.send(hotels);
    });
 
-   app.get('/tour', async (req,res)=>{
-    const cursor = tourInfoCollection.find({});
-    const tours = await cursor.toArray();
+   app.get('/tours', async (req,res)=>{
+    const cursors = tourInfoCollection.find({});
+    const tours = await cursors.toArray();
     res.send(tours);
    });
 
    
-   app.get('/bus', async (req,res)=>{
-    const cursor = busCollection.find({});
-    const busInfo = await cursor.toArray();
-    res.send(busInfo);
+   app.get('/buses', async (req,res)=>{
+    const cursor = busesCollection.find({});
+    const busesInfo = await cursor.toArray();
+    res.send(busesInfo);
    });
  
 
