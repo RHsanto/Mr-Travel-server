@@ -20,43 +20,36 @@ async function run() {
     const hotelInfoCollection = database.collection("hotelInfo");
     const tourInfoCollection = database.collection(" tourInfo" );
     const flightsCollection = database.collection("flights");
-    const busesCollection = database.collection(" busInfo");
+    const busCollection = database.collection(" busData");
 
- 
 
-  //ADD ORDERS COLLECTION 
- 
-
-  // GET API ALL ORDERS
         
    // GET API OFFERS
-   app.get('/flights', async (req,res)=>{
+   app.get('/flightsData', async (req,res)=>{
     const cursor = flightsCollection.find({});
     const flights = await cursor.toArray();
     res.send(flights);
    });
 
   
-   app.get('/hotel', async (req,res)=>{
+   app.get('/hotelData', async (req,res)=>{
     const cursor = hotelInfoCollection.find({});
     const hotels = await cursor.toArray();
     res.send(hotels);
    });
 
-   app.get('/tours', async (req,res)=>{
+   app.get('/toursData', async (req,res)=>{
     const cursors = tourInfoCollection.find({});
     const tours = await cursors.toArray();
     res.send(tours);
    });
 
-   
-   app.get('/buses', async (req,res)=>{
-    const cursor = busesCollection.find({});
-    const busesInfo = await cursor.toArray();
-    res.send(busesInfo);
-   });
  
-
+   app.get('/busData', async (req,res)=>{
+     const cursor=busCollection.find({});
+     const busData= await cursor.toArray();
+     res.send(busData)
+   })
    
   } finally {
    // await client.close();
@@ -70,5 +63,5 @@ app.get('/',(req,res)=>{
 app.listen(port, () => {
   console.log('Running the server on Mr. Travel',port)
 })
-//user : MrTravel
-//Pass: SrZmk0NfFNM6mod3
+//user : MrTravel 
+//Pass: SrZmk0NfFNM6mod3 
